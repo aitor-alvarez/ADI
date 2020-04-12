@@ -1,5 +1,5 @@
 import torch
-import librosa
+import torchaudio
 import numpy as np
 from torch.utils.data import DataLoader, TensorDataset
 from utils.data_utils import padding_tensor
@@ -10,7 +10,7 @@ from torch.utils.data.sampler import SubsetRandomSampler
 
 
 def load_audio(item):
-    wav, sr = librosa.load(item, mono=True)
+    wav, sr = torchaudio.load(item)
     return wav
 
 

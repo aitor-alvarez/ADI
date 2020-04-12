@@ -6,8 +6,8 @@ from torch.functional import F
 class CRNN(nn.Module):
     def __init__(self):
         super(CRNN, self).__init__()
-        self.speclayer = transforms.MFCC(n_mfcc=128)
-        #self.speclayer = transforms.MelSpectrogram()
+        #self.speclayer = transforms.MFCC(n_mfcc=128)
+        self.speclayer = transforms.MelSpectrogram()
         #self.speclayer = transforms.MelScale()
         self.layer1 = nn.Sequential(
             nn.Conv2d(1, 128, 3, 2),
@@ -39,7 +39,7 @@ class CRNN(nn.Module):
         )
         self.GRU = nn.GRU(6272, 256, 2, batch_first=True)
         self.flatten = nn.Flatten()
-        self.fc1 = nn.Linear(32512, 5)
+        self.fc1 = nn.Linear(22528, 5)
 
 
     def forward(self, x):

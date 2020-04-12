@@ -8,11 +8,11 @@ def padding_tensor(sequences):
     input=list of tensors
     """
     num = len(sequences)
-    max_len = max([s.size(0) for s in sequences])
+    max_len = max([s.size(1) for s in sequences])
     out_dims = (num, max_len)
     out_tensor = sequences[0].data.new(*out_dims).fill_(0)
     for i, tensor in enumerate(sequences):
-        length = tensor.size(0)
+        length = tensor.size(1)
         out_tensor[i, :length] = tensor
     return out_tensor
 
