@@ -2,5 +2,7 @@
 /patterns
 /venv
 /.idea
+crnn_training
 .idea/workspace.xml
 crnn_MelSpec
+.DS_Store
