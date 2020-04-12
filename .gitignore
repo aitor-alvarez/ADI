@@ -1,0 +1,6 @@
+/data
+/patterns
+/venv
+/.idea
+.idea/workspace.xml
+crnn_MelSpec
