@@ -25,6 +25,7 @@ def get_data():
     data = padding_tensor(data)
     labels = [d[1] for d in dataset]
     targets = torch.as_tensor(labels)
+    print(min(labels))
     tensor_dataset = TensorDataset(targets, data)
     valid_size = 0.2
     dataset_size = len(tensor_dataset)

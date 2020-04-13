@@ -18,7 +18,8 @@ def train_model(model, trainloader):
             outputs = model(sounds)
             loss = criterion(outputs, labels)
             loss_list.append(loss.item())
-
+            print(outputs.shape)
+            print(labels)
             # Backprop and perform Adam optimization
             optimizer.zero_grad()
             loss.backward()
