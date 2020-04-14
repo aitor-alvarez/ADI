@@ -54,4 +54,5 @@ def test_model(model, testloader):
             y.append(labels.numpy())
 
     print('Accuracy: %d %%' % (100 * correct / total))
+    torch.save(model.state_dict(), '.')
     write_file('accuracy_test.txt', [(100 * correct / total)])
