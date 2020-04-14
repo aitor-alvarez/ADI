@@ -37,7 +37,6 @@ def tensor_loader(path):
 
 def write_file(file, list):
     file_out = open(file, 'w')
-    file_out.open()
     for l in list:
         file_out.write(str(l)+"\n")
     file_out.close()
