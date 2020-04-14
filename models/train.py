@@ -1,6 +1,6 @@
 import torch
 from torch.optim import Adam
-from utils.metrics import multi_auc_score
+from utils.data_utils import write_file
 
 
 
@@ -35,6 +35,8 @@ def train_model(model, trainloader):
                 print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Accuracy: {:.2f}%'
                       .format(epoch + 1, num_epochs, i + 1, total_step, loss.item(),
                               (correct / total) * 100))
+    write_file('accuracy.txt', acc_list)
+    write_file('loss.txt', loss_list)
 
 
 def test_model(model, testloader):
@@ -51,6 +53,5 @@ def test_model(model, testloader):
             y_predicted.append(outputs.numpy())
             y.append(labels.numpy())
 
-#    auc = multi_auc_score(y, y_predicted)
- #   print('AUC Score: %d %%' % (100 * auc))
     print('Accuracy: %d %%' % (100 * correct / total))
+    write_file('accuracy_test.txt', [(100 * correct / total)])
