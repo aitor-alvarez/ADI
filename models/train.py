@@ -49,6 +49,7 @@ def train_model(model, trainloader):
             break
         else:
             continue
+    loss_list.append('-----'+str(epoch)+'-----')
     write_file('accuracy.txt', acc_list)
     write_file('loss.txt', loss_list)
 
@@ -68,5 +69,5 @@ def test_model(model, testloader):
             y.append(labels.numpy())
 
     print('Accuracy: %d %%' % (100 * correct / total))
-    torch.save(model.state_dict(), '.')
     write_file('accuracy_test.txt', [(100 * correct / total)])
+    torch.save(model.state_dict(), '.')
