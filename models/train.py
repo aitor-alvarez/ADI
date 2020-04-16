@@ -1,12 +1,17 @@
 import torch
 from torch.optim import Adam
 from utils.data_utils import write_file
+import numpy as np
 
 
 
 def train_model(model, trainloader):
     learning_rate = 0.001
     num_epochs = 40
+    epochs_stop = 5
+    min_loss = np.Inf
+    epoch_min_loss = np.Inf
+    no_improve = 0
     criterion = torch.nn.CrossEntropyLoss()
     optimizer = Adam(model.parameters(), lr=learning_rate)
     total_step = len(trainloader)
@@ -18,8 +23,8 @@ def train_model(model, trainloader):
             outputs = model(sounds)
             loss = criterion(outputs, labels)
             loss_list.append(loss.item())
-            print(outputs.shape)
-            print(labels)
+            if loss<min_loss:
+                min_loss=loss
             # Backprop and perform Adam optimization
             optimizer.zero_grad()
             loss.backward()
@@ -35,6 +40,15 @@ def train_model(model, trainloader):
                 print('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}, Accuracy: {:.2f}%'
                       .format(epoch + 1, num_epochs, i + 1, total_step, loss.item(),
                               (correct / total) * 100))
+        if min_loss< epoch_min_loss:
+            epoch_min_loss=min_loss
+            no_improve=0
+        else:
+            no_improve+=1
+        if no_improve==epochs_stop:
+            break
+        else:
+            continue
     write_file('accuracy.txt', acc_list)
     write_file('loss.txt', loss_list)
 
