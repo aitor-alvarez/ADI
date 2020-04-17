@@ -1,5 +1,6 @@
 from utils.dataloader import get_data
 from models.crnn import CRNN
+from models.residual import ResidualLSTM
 from models import train
 import torch
 
