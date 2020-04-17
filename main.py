@@ -11,5 +11,4 @@ else:
     device = torch.device('cpu')
 model.to(device)
 train.train_model(model, train_data)
-model.save()
 train.test_model(model, test_data)

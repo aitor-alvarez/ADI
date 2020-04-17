@@ -2,9 +2,9 @@ import urllib
 import os
 
 
-filesdir='./data/'
+filesdir='./data/train/'
 
-for line in open('./data/audio_list'):
+for line in open('./data/audio_train'):
     dir = line.rsplit('/', 2)[1]
     name = line.rsplit('/', 2)[2].replace('\n', '')
 
