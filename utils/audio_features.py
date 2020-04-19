@@ -11,8 +11,8 @@ import os
 
 
 def run_main(pat=False):
-    path = './data/EGY/'
-    out_path = './patterns/EGY/'
+    path = './data/train/MSA/'
+    out_path = './patterns_train/MSA/'
     audio_list = []
     if pat==False:
         dictionary = create_dictionary(out_path)
@@ -60,7 +60,7 @@ def run_main(pat=False):
             if pat==True:
                 pattern_length=5
                 patterns_file = aud.replace('.wav', '')
-                patterns_file = os.path.join(root, aud.replace('.wav', '')).replace('/data/', '/patterns/')
+                patterns_file = os.path.join(root, aud.replace('.wav', '')).replace('/data/train/', '/patterns_train/')
                 patt = Gapbide(cont, 3, 0, 0, pattern_length, patterns_file)
                 patt.run()
             else:

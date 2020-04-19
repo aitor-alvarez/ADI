@@ -1,5 +1,6 @@
 /data
 /patterns
+/patterns_train
 /venv
 /.idea
 crnn_training

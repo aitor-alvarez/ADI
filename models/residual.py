@@ -37,9 +37,9 @@ class ResidualLSTM(nn.Module):
             nn.ReLU()
         )
         self.layer2 = self.make_layer(block, 128, layers[0])
-        self.lstm = nn.LSTM(13356, 1000, batch_first=True, bidirectional=True)
+        self.lstm = nn.LSTM(6426, 1000, batch_first=True, bidirectional=True)
         self.flatten = nn.Flatten()
-        self.fc = nn.Linear(256000, 4)
+        self.fc = nn.Linear(256000, 5)
 
 
     def make_layer(self, block, out_channels, blocks, stride=1):
