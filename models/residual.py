@@ -63,6 +63,5 @@ class ResidualLSTM(nn.Module):
         out = out_residual.reshape(batch, time, -1)
         lstm_out, hidden = self.lstm(out)
         in_ffn = self.flatten(lstm_out)
-        print(in_ffn.shape)
         output= self.fc(in_ffn)
         return F.log_softmax(output, dim=1)
