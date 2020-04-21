@@ -7,7 +7,7 @@ def segment(t, audio_file, name):
     try:
         seg = cante[t[0][0] * 1000:t[-1][-1] * 1000]
         #seg = cante[t[0][0] * 1000:(t[0][0] * 1000)+3000]
-        if seg.duration_seconds>=0.5:
+        if seg.duration_seconds>=0.3:
             seg.set_channels(1)
             seg.export(name + '_' + str(uuid.uuid4()) + '.wav', format="wav", bitrate="192k")
     except:

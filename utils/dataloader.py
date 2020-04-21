@@ -4,7 +4,7 @@ import numpy as np
 from torch.utils.data import DataLoader, TensorDataset
 from utils.data_utils import padding_tensor
 from torchvision.datasets import DatasetFolder
-from torch.utils.data.sampler import SubsetRandomSampler
+from torch.utils.data import random_split, SubsetRandomSampler
 
 
 
@@ -16,7 +16,7 @@ def load_audio(item):
 
 def get_data():
     dataset = DatasetFolder(
-        root='./patterns/',
+        root='./patterns_train/',
         loader=load_audio,
         extensions='.wav'
     )
@@ -27,7 +27,7 @@ def get_data():
     targets = torch.as_tensor(labels)
     tensor_dataset = TensorDataset(targets, data)
     valid_size = 0.2
-    dataset_size = len(tensor_dataset)
+    dataset_size = int(len(tensor_dataset)*0.6)
     indices = list(range(dataset_size))
     split = int(valid_size * dataset_size)
     np.random.shuffle(indices)

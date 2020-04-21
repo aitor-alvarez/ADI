@@ -19,6 +19,9 @@ def train_model(model, trainloader):
     acc_list = []
     for epoch in range(num_epochs):
         for i, (labels, sounds) in enumerate(trainloader):
+            if torch.cuda.is_available():
+                labels = labels.cuda()
+                sounds = sounds.cuda()
             # Run the forward pass
             outputs = model(sounds)
             loss = criterion(outputs, labels)
@@ -61,6 +64,9 @@ def test_model(model, testloader):
     y_predicted=[]
     with torch.no_grad():
         for labels, sounds in testloader:
+            if torch.cuda.is_available():
+                labels = labels.cuda()
+                sounds = sounds.cuda()
             outputs = model(sounds)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)

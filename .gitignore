@@ -2,6 +2,7 @@
 /patterns
 /patterns_train
 /venv
+*.pyc
 /.idea
 crnn_training
 .idea/workspace.xml

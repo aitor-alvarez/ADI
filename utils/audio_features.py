@@ -11,8 +11,8 @@ import os
 
 
 def run_main(pat=False):
-    path = './data/train/MSA/'
-    out_path = './patterns_train/MSA/'
+    path = './data/train/EGY/'
+    out_path = './patterns_train/EGY/'
     audio_list = []
     if pat==False:
         dictionary = create_dictionary(out_path)

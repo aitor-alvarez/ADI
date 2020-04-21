@@ -5,13 +5,15 @@ from torch.functional import F
 #Residual blocks combined with BLTSM
 
 class Resblock(nn.Module):
-    def __init__(self, in_channels, out_channels, stride=1):
+    def __init__(self, in_channels, out_channels, kernel_size=3, stride=1):
         super(Resblock, self).__init__()
-        self.conv1 = nn.Conv2d(in_channels, out_channels, stride)
+        self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size, stride)
         self.bn1 = nn.BatchNorm2d(out_channels)
-        self.relu = nn.ReLU(inplace=True)
-        self.conv2 = nn.Conv2d(out_channels, out_channels, stride)
+        self.conv2 = nn.Conv2d(out_channels, out_channels, kernel_size, stride)
         self.bn2 = nn.BatchNorm2d(out_channels)
+        self.conv3 = nn.Conv2d(out_channels, out_channels, kernel_size, stride)
+        self.bn3 = nn.BatchNorm2d(out_channels)
+        self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
         res = x
@@ -42,9 +44,9 @@ class ResidualLSTM(nn.Module):
         self.fc = nn.Linear(256000, 5)
 
 
-    def make_layer(self, block, out_channels, blocks, stride=1):
+    def make_layer(self, block, out_channels, blocks, kernel=3, stride=1):
         layers = []
-        layers.append(block(self.in_channels, out_channels, stride))
+        layers.append(block(self.in_channels, out_channels, kernel, stride))
         self.in_channels = out_channels
         for i in range(1, blocks):
             layers.append(block(out_channels, out_channels))
