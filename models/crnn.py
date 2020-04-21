@@ -39,7 +39,7 @@ class CRNN(nn.Module):
         )
         self.GRU = nn.GRU(6272, 256, 2, batch_first=True)
         self.flatten = nn.Flatten()
-        self.fc1 = nn.Linear(22528, 5)
+        self.fc1 = nn.Linear(10496, 5)
 
 
     def forward(self, x):
