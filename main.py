@@ -5,8 +5,8 @@ from models import train
 import torch
 
 train_data, test_data = get_data()
-model = CRNN()
-#model = ResidualLSTM(Resblock, [2])
+#model = CRNN()
+model = ResidualLSTM(Resblock, [2])
 if torch.cuda.is_available():
     model = model.cuda()
 

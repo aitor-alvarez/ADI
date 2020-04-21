@@ -22,7 +22,8 @@ class Resblock(nn.Module):
         out = self.relu(out)
         out = self.conv2(out)
         out = self.bn2(out)
-        out += res
+        out = self.conv3(out)
+        out = self.bn3(out)
         out = self.relu(out)
         return out
 
@@ -39,7 +40,7 @@ class ResidualLSTM(nn.Module):
             nn.ReLU()
         )
         self.layer2 = self.make_layer(block, 128, layers[0])
-        self.lstm = nn.LSTM(6426, 1000, batch_first=True, bidirectional=True)
+        self.lstm = nn.LSTM(2193, 1000, batch_first=True, bidirectional=True)
         self.flatten = nn.Flatten()
         self.fc = nn.Linear(256000, 5)
 
@@ -62,5 +63,6 @@ class ResidualLSTM(nn.Module):
         out = out_residual.reshape(batch, time, -1)
         lstm_out, hidden = self.lstm(out)
         in_ffn = self.flatten(lstm_out)
+        print(in_ffn.shape)
         output= self.fc(in_ffn)
         return F.log_softmax(output, dim=1)

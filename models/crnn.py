@@ -46,9 +46,13 @@ class CRNN(nn.Module):
         x = x.unsqueeze(1)
         in_spec = self.speclayer(x)
         out = self.layer1(in_spec)
+        print(out.shape)
         out = self.layer2(out)
+        print(out.shape)
         out = self.layer3(out)
+        print(out.shape)
         out = self.layer4(out)
+        print(out.shape)
         out = out.transpose(1, -1)
 
         # out -> (batch, time, channel*freq)
