@@ -77,3 +77,7 @@ def test_model(model, testloader):
     print('Accuracy: %d %%' % (100 * correct / total))
     write_file('accuracy_test.txt', [(100 * correct / total)])
     torch.save(model.state_dict(), '.')
+    targets = np.asarray(y)
+    pred = np.asarray(y_predicted)
+    np.save('targets.npy', targets)
+    np.save('predicted.npy', pred)

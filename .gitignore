@@ -1,8 +1,10 @@
 /data
 /patterns
 /patterns_train
+/patterns_test
 /venv
 *.pyc
+*.txt
 /.idea
 crnn_training
 .idea/workspace.xml
