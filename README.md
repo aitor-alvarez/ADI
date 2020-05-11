@@ -13,4 +13,5 @@ The following libraries are required to run the model:
 To run the model just execute python main.py
 
 
-Data for the test set is available at https://github.com/aitor-mir/adi-patterns 
+Data from intonation patterns extracted from the VarDial and MGB-3 test set is available at https://github.com/aitor-mir/adi-patterns 
+
