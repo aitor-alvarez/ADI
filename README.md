@@ -1,5 +1,5 @@
 # ADI
-Arabic Dialect Identification using intonation patterns and Hybrid BLSTM Resnets
+Arabic Dialect Identification using intonation patterns and Hybrid BLSTM Resnets networks
 
 ## Requirements
 
