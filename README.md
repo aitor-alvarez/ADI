@@ -17,10 +17,13 @@ Data from intonation patterns extracted from the VarDial and MGB-3 test set is a
 
 If you intend to use this software for research purposes, please cite the following paper:
 ```
-@inproceedings{alvarez2020learning,
-  title={Learning Intonation Pattern Embeddings for Arabic Dialect Identification},
-  author={Alvarez, Aitor Arronte and Issa, Elsayed Sabry Abdelaal},
-  booktitle={INTERSPEECH 2020},
-  year={2020}
+@inproceedings{Alvarez2020,
+  author={Aitor Arronte Alvarez and Elsayed Sabry Abdelaal Issa},
+  title={{Learning Intonation Pattern Embeddings for Arabic Dialect Identification}},
+  year=2020,
+  booktitle={Proc. Interspeech 2020},
+  pages={472--476},
+  doi={10.21437/Interspeech.2020-2906},
+  url={http://dx.doi.org/10.21437/Interspeech.2020-2906}
 }
 ```
