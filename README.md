@@ -19,7 +19,7 @@ If you intend to use this software for research purposes, please cite the follow
 ```
 @inproceedings{Alvarez2020,
   author={Aitor Arronte Alvarez and Elsayed Sabry Abdelaal Issa},
-  title={{Learning Intonation Pattern Embeddings for Arabic Dialect Identification}},
+  title={Learning Intonation Pattern Embeddings for Arabic Dialect Identification},
   year=2020,
   booktitle={Proc. Interspeech 2020},
   pages={472--476},
